@@ -101,14 +101,16 @@ public class GameManager : MonoBehaviour {
     //ゲームを最初からやり直す
     private void ResetGame()
     {
-        isGameOver = false;
-        isStarted = false;
-        ResetPlayer();
-        resultPanel.SetActive(false);
-        countTimer.SetActive(true);
-        StartCoroutine(countTimer.GetComponent<CountTimer>().CountDown(3));
-        //ポーズ画面を非表示にする
-        SwitchMenu(emergency,false);
+        SceneManager.LoadScene( "Game" );
+
+        //isGameOver = false;
+        //isStarted = false;
+        //ResetPlayer();
+        //resultPanel.SetActive(false);
+        //countTimer.SetActive(true);
+        //StartCoroutine(countTimer.GetComponent<CountTimer>().CountDown(3));
+        ////ポーズ画面を非表示にする
+        //SwitchMenu(emergency,false);
     }
 
     //駒の位置と角度をもとに戻す
