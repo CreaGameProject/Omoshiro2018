@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: CGP
-  productName: Omosiro_Science_2018
+  productName: Omoshiro_2018
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -152,7 +152,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.CGP.Omosiro_Science_2018
+    Standalone: com.CGP.Omoshiro_2018
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -654,9 +654,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: cfbee051-8274-4b24-ba0a-caec6ce67333
-  projectName: Omosiro_Science_2018
-  organizationId: jcjmwh80
+  cloudProjectId: bb8a3ad0-164a-4394-86c6-e66d4ac399e5
+  projectName: Omoshiro_2018
+  organizationId: kazuya_pum
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
