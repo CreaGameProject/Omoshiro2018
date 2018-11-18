@@ -52,6 +52,11 @@ public class ImportManager : MonoBehaviour
     {
         textures[0] = GetTexture( "Player1.png" );
         textures[1] = GetTexture( "Player2.png" );
+
+        for ( int i = 0; i < select.Length; i++ )
+        {
+            select[i].sprite = Sprite.Create( textures[i], new Rect( 0, 0, textures[0].width, textures[0].height ), Vector2.zero );
+        }
     }
 
     private void ShowSelect()
@@ -59,7 +64,6 @@ public class ImportManager : MonoBehaviour
         isSelecting = true;
         for ( int i = 0; i < select.Length; i++ )
         {
-            select[i].sprite = Sprite.Create( textures[i], new Rect( 0, 0, textures[0].width, textures[0].height ), Vector2.zero );
             select[i].gameObject.SetActive( true );
         }
     }
@@ -86,6 +90,8 @@ public class ImportManager : MonoBehaviour
             Texture2D tmp = textures[0];
             textures[0] = textures[1];
             textures[1] = tmp;
+
+            isSwap = false;
         }
     }
 

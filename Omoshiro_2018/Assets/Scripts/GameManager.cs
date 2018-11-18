@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(AudioSource))]
-public class GameManager : MonoBehaviour {
+[RequireComponent( typeof( AudioSource ) )]
+public class GameManager : MonoBehaviour
+{
 
     [HideInInspector] public bool isGameOver;//勝ち負けが決まったかどうか
     private bool isStarted;//ゲームが始まっているかどうか
@@ -29,47 +30,59 @@ public class GameManager : MonoBehaviour {
     //private Replayer replayer;
 
 
-    void Start () {
+    void Start()
+    {
         isGameOver = false;
         isStarted = false;
-        buttonToTitle.onClick.AddListener(() => BackToTitle());
-        buttonResetGame.onClick.AddListener(() => ResetGame());
-        SwitchMenu(emergency,false);
-        SwitchMenu(resultPanel, false);
-        StartCoroutine(PlayBGM());
+        buttonToTitle.onClick.AddListener( () => BackToTitle() );
+        buttonResetGame.onClick.AddListener( () => ResetGame() );
+        SwitchMenu( emergency, false );
+        SwitchMenu( resultPanel, false );
+        StartCoroutine( PlayBGM() );
     }
 
 
 
-    void Update () {
+    void Update()
+    {
 
         //エスケープキーで終了
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if ( Input.GetKeyDown( KeyCode.Escape ) )
             Application.Quit();
 
         //ポーズ画面の表示
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if ( Input.GetKeyDown( KeyCode.Mouse1 ) )
         {
-            if (emergency.activeSelf)
-                SwitchMenu(emergency, false);
+            if ( emergency.activeSelf )
+                SwitchMenu( emergency, false );
             else
-                SwitchMenu(emergency, true);
+                SwitchMenu( emergency, true );
+        }
+
+        if ( Input.GetKeyDown( KeyCode.R ) )
+        {
+            ResetGame();
+        }
+
+        if ( Input.GetKeyDown( KeyCode.T ) )
+        {
+            BackToTitle();
         }
     }
 
     //いちいちコルーチンを呼び出すのが面倒だったので記述
-    public void End(int id)
+    public void End( int id )
     {
         //StartCoroutine(EndGame(id));
-        EndGame(id);
+        EndGame( id );
     }
 
     //ゲーム終了メソッド
-    private void EndGame(int id)
+    private void EndGame( int id )
     {
         //screenRecorder.RecordControl();
         //1Pが勝利した場合
-        if(id == 1)
+        if ( id == 1 )
         {
             //Debug.Log("Win 1P");
             resultImagePlayer1.sprite = resultSprite[0];
@@ -89,13 +102,13 @@ public class GameManager : MonoBehaviour {
 
     public void ShowResult()
     {
-        resultPanel.SetActive(true);
+        resultPanel.SetActive( true );
     }
 
     //タイトルに戻る
     public void BackToTitle()
     {
-        SceneManager.LoadScene("Title");
+        SceneManager.LoadScene( "Title" );
     }
 
     //ゲームを最初からやり直す
@@ -116,17 +129,17 @@ public class GameManager : MonoBehaviour {
     //駒の位置と角度をもとに戻す
     private void ResetPlayer()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Player");
-        foreach(GameObject player in objects)
+        GameObject[] objects = GameObject.FindGameObjectsWithTag( "Player" );
+        foreach ( GameObject player in objects )
         {
             player.GetComponent<PlayerParams>().ResetPosition();
         }
     }
 
     //パネル表示非表示の切り替え
-    private void SwitchMenu(GameObject obj, bool active)
+    private void SwitchMenu( GameObject obj, bool active )
     {
-        obj.SetActive(active);
+        obj.SetActive( active );
     }
 
     //ゲームを開始する
@@ -137,18 +150,18 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator PlayBGM()
     {
-        while (!isGameOver)
+        while ( !isGameOver )
         {
-            int choice = Random.Range(0, 2);
-            if(choice == 0)
+            int choice = Random.Range( 0, 2 );
+            if ( choice == 0 )
             {
-                bgmPlayer.PlayOneShot(bgm1);
+                bgmPlayer.PlayOneShot( bgm1 );
             }
             else
             {
-                bgmPlayer.PlayOneShot(bgm2);
+                bgmPlayer.PlayOneShot( bgm2 );
             }
-            while (bgmPlayer.isPlaying)
+            while ( bgmPlayer.isPlaying )
                 yield return null;
         }
     }
